@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f1">
+  <meta name="description" content="Small-batch celebration cakes, baked with love and a little bit of magic. Find your next favourite at Butter & Bloom.">
+  <title>Butter & Bloom | Cakes for the good stuff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fbf7f1;
+      --paper: #fffdf9;
+      --ink: #28251f;
+      --muted: #797369;
+      --berry: #893e4d;
+      --berry-dark: #6f2d3b;
+      --peach: #f4d9c9;
+      --line: #e9e1d7;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+
+    .announcement {
+      padding: 10px 16px;
+      background: var(--berry);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .announcement span { opacity: .76; margin-inline: 8px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 247, 241, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(233, 225, 215, .75);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 23px;
+      font-weight: 600;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--berry);
+      border-radius: 50%;
+      color: var(--berry);
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+    }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a, .nav-order {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .nav-links a { color: #5d584f; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--berry); }
+    .nav-order {
+      padding: 13px 20px;
+      background: var(--berry);
+      border-radius: 3px;
+      color: white;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .nav-order:hover, .button-primary:hover { background: var(--berry-dark); transform: translateY(-2px); }
+    .menu-toggle {
+      display: none;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .hero {
+      display: grid;
+      min-height: 600px;
+      grid-template-columns: 1fr 1.04fr;
+      align-items: center;
+      gap: 48px;
+      padding-block: 54px 66px;
+    }
+    .hero-copy { max-width: 490px; padding-left: 4px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 20px;
+      color: var(--berry);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 27px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 23px;
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 76px);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: 1.05;
+    }
+    h1 em { color: var(--berry); font-weight: 500; }
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 390px;
+      margin-bottom: 31px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+    .button-primary {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 0 21px;
+      border: 0;
+      border-radius: 3px;
+      background: var(--berry);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .text-link span { color: var(--berry); font-size: 18px; transition: transform .2s ease; }
+    .text-link:hover span { transform: translateX(4px); }
+    .hero-visual {
+      position: relative;
+      min-height: 484px;
+      margin: 0;
+    }
+    .hero-image {
+      position: absolute;
+      inset: 0 28px 16px 0;
+      overflow: hidden;
+      background: var(--peach);
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-image::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 65%, rgba(37, 23, 19, .12));
+      content: "";
+    }
+    .hero-stamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      width: 138px;
+      height: 138px;
+      place-content: center;
+      border: 7px solid var(--cream);
+      border-radius: 50%;
+      background: var(--berry);
+      color: white;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+    .hero-stamp small { font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+    .hero-stamp strong { margin-top: 4px; font-family: var(--serif); font-size: 21px; font-weight: 500; }
+    .hero-note {
+      position: absolute;
+      top: 35px;
+      right: -6px;
+      color: var(--berry);
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+      transform: rotate(8deg);
+    }
+
+    .promise {
+      border-block: 1px solid var(--line);
+      background: rgba(255, 253, 249, .58);
+    }
+    .promise-inner {
+      display: grid;
+      min-height: 96px;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+    .promise-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      color: #625d54;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+    .promise-item + .promise-item { border-left: 1px solid var(--line); }
+    .promise-icon { color: var(--berry); font-family: var(--serif); font-size: 21px; font-style: italic; }
+
+    .section { padding-block: 100px; }
+    .section-heading { max-width: 570px; margin: 0 auto 43px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading .eyebrow::before { display: none; }
+    h2 {
+      margin-bottom: 13px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 49px);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.15;
+    }
+    .section-heading > p:last-child { margin-bottom: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .cake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .cake-card { min-width: 0; }
+    .cake-photo { position: relative; height: 286px; overflow: hidden; background: var(--peach); }
+    .cake-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .cake-card:hover .cake-photo img { transform: scale(1.04); }
+    .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 7px 10px;
+      background: var(--paper);
+      color: var(--berry);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .cake-info { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 17px; }
+    .cake-info h3 { margin: 0; font-family: var(--serif); font-size: 21px; font-weight: 500; }
+    .cake-info span { color: var(--berry); font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .cake-card > p { margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .center-action { margin-top: 39px; text-align: center; }
+    .button-outline {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px;
+      border: 1px solid #cbbeb2;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .button-outline:hover { border-color: var(--berry); color: var(--berry); }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 75px;
+      padding-block: 80px;
+      background: #f2e9df;
+    }
+    .story-inner { width: min(1160px, calc(100% - 48px)); margin-inline: auto; display: contents; }
+    .story-photo { position: relative; height: 424px; margin-left: max(24px, calc((100vw - 1160px) / 2)); }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .story-copy { max-width: 460px; padding-right: max(24px, calc((100vw - 1160px) / 2)); }
+    .story-copy .eyebrow { margin-bottom: 17px; }
+    .story-copy h2 { max-width: 400px; margin-bottom: 17px; }
+    .story-copy > p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .signature { margin-top: 22px; color: var(--berry); font-family: var(--serif); font-size: 24px; font-style: italic; }
+    .signature small { display: block; margin-top: 3px; color: var(--muted); font-family: var(--sans); font-size: 10px; font-style: normal; letter-spacing: .12em; text-transform: uppercase; }
+
+    .quote-section { padding-block: 88px 96px; text-align: center; }
+    .quote-mark { margin-bottom: 8px; color: var(--berry); font-family: var(--serif); font-size: 50px; line-height: .8; }
+    blockquote {
+      max-width: 660px;
+      margin: 0 auto;
+      font-family: var(--serif);
+      font-size: clamp(23px, 3vw, 32px);
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .quote-byline { margin: 18px 0 0; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+
+    .order-banner {
+      position: relative;
+      overflow: hidden;
+      padding: 67px 24px;
+      background: var(--berry);
+      color: white;
+      text-align: center;
+    }
+    .order-banner::before, .order-banner::after {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      content: "";
+    }
+    .order-banner::before { top: -120px; left: -50px; }
+    .order-banner::after { right: -40px; bottom: -160px; width: 300px; height: 300px; }
+    .order-banner .eyebrow { justify-content: center; color: #f1cfc0; }
+    .order-banner .eyebrow::before { display: none; }
+    .order-banner h2 { max-width: 590px; margin: 0 auto 14px; }
+    .order-banner > p:not(.eyebrow) { margin-bottom: 25px; color: rgba(255,255,255,.76); font-size: 13px; }
+    .button-light {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px;
+      background: var(--cream);
+      color: var(--berry);
+      font-size: 11px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button-light:hover { background: white; transform: translateY(-2px); }
+
+    footer { padding: 37px 0 24px; }
+    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+    .footer-top > p { max-width: 250px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 23px; }
+    .footer-links a { color: #625d54; font-size: 11px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 17px; color: #938b80; font-size: 10px; }
+
+    @media (max-width: 800px) {
+      .container { width: min(100% - 36px, 620px); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-order { display: none; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 24px 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--cream);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 13px 0; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 35px; padding-block: 58px 48px; }
+      .hero-copy { max-width: 560px; }
+      h1 { max-width: 500px; font-size: clamp(49px, 10vw, 70px); }
+      .hero-visual { min-height: min(65vw, 430px); }
+      .hero-image { right: 18px; }
+      .hero-stamp { width: 118px; height: 118px; }
+      .promise-inner { min-height: 85px; }
+      .promise-item { gap: 7px; font-size: 9px; letter-spacing: 0; }
+      .section { padding-block: 75px; }
+      .cake-grid { gap: 15px; }
+      .cake-photo { height: 230px; }
+      .cake-info { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .cake-info h3 { font-size: 19px; }
+      .story { gap: 35px; padding-block: 58px; }
+      .story-photo { height: 360px; margin-left: 18px; }
+      .story-copy { padding-right: 18px; }
+      .footer-top { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .announcement { font-size: 9px; letter-spacing: .08em; }
+      .brand { font-size: 21px; }
+      .hero { padding-top: 46px; }
+      .hero-visual { min-height: 350px; }
+      .hero-image { inset: 0 18px 14px 0; }
+      .hero-stamp { width: 104px; height: 104px; border-width: 5px; }
+      .hero-stamp strong { font-size: 18px; }
+      .hero-note { top: 12px; right: -3px; font-size: 15px; }
+      .promise-inner { grid-template-columns: 1fr; padding-block: 8px; }
+      .promise-item { min-height: 42px; justify-content: flex-start; padding-left: 20%; font-size: 10px; }
+      .promise-item + .promise-item { border-top: 1px solid var(--line); border-left: 0; }
+      .section { padding-block: 65px; }
+      .section-heading { margin-bottom: 30px; }
+      .cake-grid { grid-template-columns: 1fr; gap: 28px; }
+      .cake-photo { height: 310px; }
+      .cake-info { align-items: baseline; flex-direction: row; }
+      .cake-info h3 { font-size: 21px; }
+      .story { grid-template-columns: 1fr; gap: 29px; padding-block: 45px; }
+      .story-photo { height: 300px; margin-inline: 18px; }
+      .story-copy { max-width: none; padding-inline: 24px; }
+      .quote-section { padding-block: 66px 74px; }
+      .order-banner { padding-block: 55px; }
+      .footer-links { gap: 15px; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">A little something sweet <span>✳</span> Free local delivery on orders over $75</div>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Butter and Bloom home"><span class="brand-mark">b</span> butter &amp; bloom</a>
+      <div class="nav-links" id="nav-links">
+        <a href="#cakes">Our cakes</a>
+        <a href="#story">Our story</a>
+        <a href="#reviews">Kind words</a>
+      </div>
+      <a class="nav-order" href="mailto:hello@butterandbloom.example?subject=I'd%20love%20to%20order%20a%20cake">Order a cake <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Baked for your best days</p>
+        <h1 id="hero-title">A cake for <em>every</em> kind of happy.</h1>
+        <p>Little-batch cakes, made by hand and from the heart. For the big milestones, the tiny wins, and all the sweet moments in between.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#cakes">Find your cake <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#story">Get to know us <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="hero-visual">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85" alt="A beautifully layered cake topped with fresh berries" fetchpriority="high">
+        </div>
+        <span class="hero-note">made with love</span>
+        <div class="hero-stamp"><small>Always</small><strong>from scratch</strong><small>✳ with love ✳</small></div>
+      </figure>
+    </section>
+
+    <section class="promise" aria-label="What makes our cakes special">
+      <div class="promise-inner container">
+        <div class="promise-item"><span class="promise-icon">01</span> Baked fresh to order</div>
+        <div class="promise-item"><span class="promise-icon">02</span> Real, lovely ingredients</div>
+        <div class="promise-item"><span class="promise-icon">03</span> Made for sharing (or not)</div>
+      </div>
+    </section>
+
+    <section class="section container" id="cakes" aria-labelledby="cakes-title">
+      <div class="section-heading">
+        <p class="eyebrow">Meet the cake list</p>
+        <h2 id="cakes-title">A few crowd favourites</h2>
+        <p>Good things take butter, time, and a little extra frosting. Here are a few of ours.</p>
+      </div>
+      <div class="cake-grid">
+        <article class="cake-card">
+          <div class="cake-photo">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80" alt="Strawberry cake with whipped cream and fresh berries" loading="lazy">
+            <span class="tag">A bestseller</span>
+          </div>
+          <div class="cake-info"><h3>Berry Blush</h3><span>from $58</span></div>
+          <p>Vanilla bean sponge, berry compote &amp; clouds of cream cheese frosting.</p>
+        </article>
+        <article class="cake-card">
+          <div class="cake-photo">
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80" alt="Rich chocolate cake with a glossy chocolate finish" loading="lazy">
+            <span class="tag">A little indulgent</span>
+          </div>
+          <div class="cake-info"><h3>Midnight Chocolate</h3><span>from $62</span></div>
+          <p>Deep cocoa layers, silky ganache &amp; just the right pinch of sea salt.</p>
+        </article>
+        <article class="cake-card">
+          <div class="cake-photo">
+            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=80" alt="Elegant celebration cake finished with delicate frosting" loading="lazy">
+            <span class="tag">Made to celebrate</span>
+          </div>
+          <div class="cake-info"><h3>Sunday Lemon</h3><span>from $56</span></div>
+          <p>Bright lemon curd, soft buttery cake &amp; a sweet-tart buttercream.</p>
+        </article>
+      </div>
+      <div class="center-action"><a class="button-outline" href="mailto:hello@butterandbloom.example?subject=Can%20I%20see%20your%20full%20cake%20menu">Ask for the full menu <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="story" id="story" aria-labelledby="story-title">
+      <div class="story-inner container">
+        <div class="story-photo">
+          <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1100&q=85" alt="A baker preparing fresh ingredients in a sunlit kitchen" loading="lazy">
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">A small cake shop with a big heart</p>
+          <h2 id="story-title">The good stuff is made slowly.</h2>
+          <p>Butter &amp; Bloom began with one tiny kitchen, a hand-me-down mixer, and a belief that cake makes ordinary days feel like something worth celebrating.</p>
+          <p>Today, we still bake in small batches, use ingredients we believe in, and pipe every last swirl by hand. No shortcuts. Just the good stuff.</p>
+          <div class="signature">With love, Bea <small>Founder &amp; chief taste-tester</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section container" id="reviews" aria-label="Customer review">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <blockquote>It was so beautiful we almost didn't want to cut it. Then we tasted it, and there was absolutely no chance of leftovers.</blockquote>
+      <p class="quote-byline">Mia R. &nbsp;·&nbsp; Birthday cake enthusiast</p>
+    </section>
+
+    <section class="order-banner" aria-labelledby="order-title">
+      <p class="eyebrow">Something to celebrate?</p>
+      <h2 id="order-title">Let's make it a little sweeter.</h2>
+      <p>Tell us what you're dreaming up. We'll bring the buttercream.</p>
+      <a class="button-light" href="mailto:hello@butterandbloom.example?subject=I'd%20love%20to%20order%20a%20cake">Let's talk cake <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="#"><span class="brand-mark">b</span> butter &amp; bloom</a>
+        <p>Handmade cakes for the moments that matter, and the ones that just feel nice.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#cakes">The cakes</a>
+        <a href="#story">Our story</a>
+        <a href="mailto:hello@butterandbloom.example">Say hello</a>
+        <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Butter &amp; Bloom. Made with a little extra love.</span><span>Small batches. Big feelings.</span></div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+      navLinks.classList.toggle("is-open", !isOpen);
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        navLinks.classList.remove("is-open");
+      }
+    });
+  </script>
+</body>
+</html>
