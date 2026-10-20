@@ -304,17 +304,20 @@
     .button-outline:hover { border-color: var(--berry); color: var(--berry); }
 
     .story {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 75px;
       padding-block: 80px;
       background: #f6ebd8;
     }
-    .story-inner { width: min(1160px, calc(100% - 48px)); margin-inline: auto; display: contents; }
-    .story-photo { position: relative; height: 424px; margin-left: max(24px, calc((100vw - 1160px) / 2)); }
+    .story-inner {
+      display: grid;
+      width: min(1160px, calc(100% - 48px));
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      align-items: center;
+      gap: clamp(36px, 6vw, 80px);
+      margin-inline: auto;
+    }
+    .story-photo { position: relative; height: min(34vw, 400px); min-height: 320px; }
     .story-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .story-copy { max-width: 460px; padding-right: max(24px, calc((100vw - 1160px) / 2)); }
+    .story-copy { max-width: 480px; }
     .story-copy .eyebrow { margin-bottom: 17px; }
     .story-copy h2 { max-width: 400px; margin-bottom: 17px; }
     .story-copy > p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.85; }
@@ -408,9 +411,10 @@
       .cake-photo { height: 230px; }
       .cake-info { align-items: flex-start; flex-direction: column; gap: 4px; }
       .cake-info h3 { font-size: 19px; }
-      .story { gap: 35px; padding-block: 58px; }
-      .story-photo { height: 360px; margin-left: 18px; }
-      .story-copy { padding-right: 18px; }
+      .story { padding-block: 58px; }
+      .story-inner { width: min(100% - 36px, 620px); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+      .story-photo { height: 360px; min-height: 0; }
+      .story-copy { max-width: none; }
       .footer-top { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 560px) {
@@ -431,9 +435,10 @@
       .cake-photo { height: 310px; }
       .cake-info { align-items: baseline; flex-direction: row; }
       .cake-info h3 { font-size: 21px; }
-      .story { grid-template-columns: 1fr; gap: 29px; padding-block: 45px; }
-      .story-photo { height: 300px; margin-inline: 18px; }
-      .story-copy { max-width: none; padding-inline: 24px; }
+      .story { padding-block: 45px; }
+      .story-inner { width: min(100% - 36px, 480px); grid-template-columns: 1fr; gap: 27px; }
+      .story-photo { height: 300px; }
+      .story-copy { max-width: none; }
       .quote-section { padding-block: 66px 74px; }
       .order-banner { padding-block: 55px; }
       .footer-links { gap: 15px; }
