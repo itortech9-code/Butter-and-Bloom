@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbf7f1">
+  <meta name="theme-color" content="#fff8e9">
   <meta name="description" content="Small-batch celebration cakes, baked with love and a little bit of magic. Find your next favourite at Butter & Bloom.">
   <title>Butter & Bloom | Cakes for the good stuff</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +25,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    :focus-visible { outline: 3px solid var(--berry); outline-offset: 3px; }
     body {
       margin: 0;
       background: var(--cream);
@@ -51,9 +52,10 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(251, 247, 241, .94);
+      background: rgba(255, 248, 233, .94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(233, 225, 215, .75);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(238, 224, 210, .85);
     }
     .nav {
       min-height: 78px;
@@ -90,9 +92,14 @@
       font-weight: 600;
       letter-spacing: .04em;
     }
+    .nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
     .nav-links a { color: #5d584f; transition: color .2s ease; }
     .nav-links a:hover { color: var(--berry); }
     .nav-order {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 8px;
       padding: 13px 20px;
       background: var(--berry);
       border-radius: 3px;
@@ -102,6 +109,9 @@
     .nav-order:hover, .button-primary:hover { background: var(--berry-dark); transform: translateY(-2px); }
     .menu-toggle {
       display: none;
+      width: 44px;
+      height: 44px;
+      place-items: center;
       padding: 8px;
       border: 0;
       background: transparent;
@@ -166,6 +176,7 @@
     }
     .text-link {
       display: inline-flex;
+      min-height: 44px;
       align-items: center;
       gap: 8px;
       color: var(--ink);
@@ -362,13 +373,13 @@
     .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
     .footer-top > p { max-width: 250px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 23px; }
-    .footer-links a { color: #625d54; font-size: 11px; }
+    .footer-links a { display: inline-flex; min-height: 44px; align-items: center; color: #625d54; font-size: 11px; }
     .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 17px; color: #938b80; font-size: 10px; }
 
     @media (max-width: 800px) {
       .container { width: min(100% - 36px, 620px); }
       .nav { min-height: 68px; }
-      .menu-toggle { display: block; }
+      .menu-toggle { display: grid; }
       .nav-order { display: none; }
       .nav-links {
         position: absolute;
@@ -391,7 +402,7 @@
       .hero-image { right: 18px; }
       .hero-stamp { width: 118px; height: 118px; }
       .promise-inner { min-height: 85px; }
-      .promise-item { gap: 7px; font-size: 9px; letter-spacing: 0; }
+      .promise-item { gap: 7px; font-size: 10px; letter-spacing: 0; }
       .section { padding-block: 75px; }
       .cake-grid { gap: 15px; }
       .cake-photo { height: 230px; }
